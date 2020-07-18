@@ -1,5 +1,5 @@
 <html>
 <body>
-<h2>Northwwestern MSIT </h2>
+<h2>Artifical Intelligent  </h2>
 </body>
 </html>
