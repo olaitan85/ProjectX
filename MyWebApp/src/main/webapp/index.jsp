@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>HTML Elements Reference</title>
+  
 </head>
 <body>
 
@@ -10,4 +10,4 @@
 
 </body>
 </html>
-<title>
+
