@@ -1,5 +1,10 @@
+<!DOCTYPE html>
 <html>
 <body>
-<h2> Northwestern student. lets test sonarQube </h2>
+
+<h1>Northwestern MSIT</h1>
+
+<p>MSIT 2020.</p>
+
 </body>
 </html>
