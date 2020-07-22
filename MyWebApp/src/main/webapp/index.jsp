@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <title>HTML Elements Reference</title>
+</head>
 <body>
-  <title> Good morning</title>
- 
 
-<h1>Northwestern MSIT</h1>
-
-<p>MSIT 2020.</p>
+<h1>This is a heading</h1>
+<p>This is a paragraph.</p>
 
 </body>
 </html>
