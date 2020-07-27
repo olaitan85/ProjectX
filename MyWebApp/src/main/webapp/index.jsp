@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>HTML Elements Reference</title>
+<title>Northwestern</title>
 </head>
+
 <body>
-
-<h1>Northwestern MSIT</h1>
-<p>This is a paragraph.</p>
-
+The content of the document......
 </body>
+
 </html>
 
