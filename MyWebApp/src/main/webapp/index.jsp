@@ -5,7 +5,7 @@
 </head>
 
 <body>
-MSIT 2020
+machine learning
 </body>
 
 </html>
