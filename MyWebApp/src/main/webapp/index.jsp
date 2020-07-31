@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Networking</title>
+<title>Computer Networking</title>
 </head>
 <body>
 
