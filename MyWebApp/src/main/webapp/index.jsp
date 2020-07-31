@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Mccormick school</title>
+<title>Mccormick school of Engineering</title> 
 </head>
 <body>
 
