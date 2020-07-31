@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Computer Networking</title>
+<title>Mccormick school</title>
 </head>
 <body>
 
