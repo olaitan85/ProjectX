@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<h1>Northwestern MSIT  2020</h1>
+<h1>Northwestern   2020</h1>
 <p>It been a Great year of hardwork and dedication.</p>
 
 </body>
