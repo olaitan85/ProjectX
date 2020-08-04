@@ -7,7 +7,7 @@ pipeline {
   stages {
     stage ('Build') {
       steps {
-      sh 'mvn clean install sonar:sonar -f MyWebApp/pom.xml'
+      sh 'mvn clean install -f MyWebApp/pom.xml'
       }
     }
     stage ('Code Quality') {
