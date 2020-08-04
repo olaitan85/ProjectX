@@ -52,5 +52,34 @@ pipeline {
         slackSend(channel:'olaitan85', message: "Job is successful, here is the info - Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
       }
     }
+      stage ('DEV Approve') {
+      steps {
+      echo "Taking approval from DEV Manager for QA Deployment"
+        timeout(time: 7, unit: 'DAYS') {
+        input message: 'Do you want to deploy?', submitter: 'admin'
+        }
+      }
+    }
+     stage ('QA Deploy') {
+      steps {
+        echo "deploying to QA Env "
+        deploy adapters: [tomcat8(credentialsId: '268c42f6-f2f5-488f-b2aa-f2374d229b2e', path: '', url: 'http://your_dns_name:8090')], contextPath: null, war: '**/*.war'
+        }
+    }
+    stage ('QA Approve') {
+      steps {
+        echo "Taking approval from QA manager"
+        timeout(time: 7, unit: 'DAYS') {
+        input message: 'Do you want to proceed to PROD?', submitter: 'admin,manager_userid'
+        }
+      }
+    }
+    stage ('Slack Notification for QA Deploy') {
+      steps {
+        echo "deployed to QA Env successfully"
+        slackSend(channel:'your slack channel_name', message: "Job is successful, here is the info - Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+      }
+    }  
   }
 }
+
