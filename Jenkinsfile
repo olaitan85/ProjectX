@@ -1,6 +1,6 @@
 pipeline {
   agent any
- 
+
   tools {
   maven 'Maven3'
   }
@@ -42,14 +42,14 @@ pipeline {
     }
     stage ('DEV Deploy') {
       steps {
-      echo "deploying to DEV Env "
-      deploy adapters: [tomcat9(credentialsId: '899760b0-ebb6-4ba8-9d0a-bf4b5ca9119b', path: '', url: '100.24.238.126:8080/')], contextPath: null, war: '**/*.war'
+      echo 'deploying to DEV Env'
+      deploy adapters: [tomcat9(credentialsId: '899760b0-ebb6-4ba8-9d0a-bf4b5ca9119b', path: '', url: 'http://100.24.238.126:8080/')], contextPath: null, war: '**/*.war'
       }
     }
     stage ('Slack Notification') {
       steps {
-        echo "deployed to DEV Env successfully"
-        slackSend(channel:'PaulObalonye', message: "Job is successful, here is the info - Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+       echo "deployed to DEV Env successfully"
+        slackSend(channel:'devops201', message: "Job is successful, here is the info - Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
       }
     }
   }
