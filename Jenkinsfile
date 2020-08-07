@@ -10,19 +10,19 @@ pipeline {
       sh 'mvn clean install -f MyWebApp/pom.xml'
       }
     }
-    stage ('Code Quality'){
+      stage ('Code Quality') { 
       steps {
         withSonarQubeEnv('SonarQube') {
         sh 'mvn -f MyWebApp/pom.xml sonar:sonar'
         }
       }
     }
-    stage ('JaCoCo') {
+      stage ('JaCoCo') {
       steps {
       jacoco()
       }
     }
-    stage ('Nexus Upload') {
+      stage ('Nexus Upload') {
       steps {
       nexusArtifactUploader(
       nexusVersion: 'nexus3',
@@ -40,13 +40,13 @@ pipeline {
       ])
       }
     }
-    stage ('DEV Deploy') {
+      stage ('DEV Deploy') {
       steps {
       echo 'deploying to DEV Env'
       deploy adapters: [tomcat9(credentialsId: '899760b0-ebb6-4ba8-9d0a-bf4b5ca9119b', path: '', url: 'http://100.24.238.126:8080/')], contextPath: null, war: '**/*.war'
       }
     }
-    stage ('Slack Notification') {
+      stage ('Slack Notification') {
       steps {
        echo "deployed to DEV Env successfully"
         slackSend(channel:'devops201', message: "Job is successful, here is the info - Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
