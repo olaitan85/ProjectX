@@ -27,11 +27,11 @@ pipeline {
       nexusArtifactUploader(
       nexusVersion: 'nexus3',
       protocol: 'http',
-      nexusUrl: 'http://18.207.139.110:8081',
+      nexusUrl: 'http://54.172.245.130:8081',
       groupId: 'myGroupId',
       version: '1.0-SNAPSHOT',
       repository: 'maven-snapshots',
-      credentialsId: 'c531deff-0431-4355-8e73-ee5dc27d53c7',
+      credentialsId: '317d5ad3-2b2c-4ea4-b716-db3d218d447f',
       artifacts: [
       [artifactId: 'MyWebApp',
       classifier: '',
@@ -43,13 +43,13 @@ pipeline {
     stage ('DEV Deploy') {
       steps {
       echo 'deploying to DEV Env'
-      deploy adapters: [tomcat9(credentialsId: '0e74d36e-4eeb-4963-b18f-cc3df3abe4b9', path: '', url: 'http://54.175.209.224:8080/')], contextPath: null, war: '**/*.war'
+      deploy adapters: [tomcat9(credentialsId: '899760b0-ebb6-4ba8-9d0a-bf4b5ca9119b', path: '', url: 'http://100.25.31.227:8080/')], contextPath: null, war: '**/*.war'
       }
     }
     stage ('Slack Notification') {
       steps {
        echo "deployed to DEV Env successfully"
-        slackSend(channel:'PaulObalonye', message: "Job is successful, here is the info - Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+        slackSend(channel:'olaitan85', message: "Job is successful, here is the info - Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
       }
     }
   }
