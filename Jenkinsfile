@@ -10,14 +10,7 @@ pipeline {
       sh 'mvn clean install -f MyWebApp/pom.xml'
       }
     }
-    stage ('Code Quality') {
-      steps {
-        withSonarQubeEnv('SonarQube') {
-        sh 'mvn -f MyWebApp/pom.xml sonar:sonar'
-        }
-      }
-    }
-    stage ('JaCoCo') {
+   stage ('JaCoCo') {
       steps {
       jacoco()
       }
@@ -27,7 +20,7 @@ pipeline {
       nexusArtifactUploader(
       nexusVersion: 'nexus3',
       protocol: 'http',
-      nexusUrl: 'http://52.200.155.148:8081',
+      nexusUrl: '52.200.155.148:8081',
       groupId: 'myGroupId',
       version: '1.0-SNAPSHOT',
       repository: 'maven-snapshots',
@@ -48,8 +41,8 @@ pipeline {
     }
     stage ('Slack Notification') {
       steps {
-       echo "deployed to DEV Env successfully"
-        slackSend(channel:'PaulObalonye', message: "Job is successful, here is the info - Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+        echo "deployed to DEV Env successfully"
+        slackSend(channel:'olaitan85', message: "Job is successful, here is the info - Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
       }
     }
   }
