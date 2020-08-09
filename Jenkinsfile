@@ -27,7 +27,7 @@ pipeline {
       nexusArtifactUploader(
       nexusVersion: 'nexus3',
       protocol: 'http',
-      nexusUrl: '54.196.24.192:8081',
+      nexusUrl: '52.200.155.148:8081',
       groupId: 'myGroupId',
       version: '1.0-SNAPSHOT',
       repository: 'maven-snapshots',
@@ -43,13 +43,13 @@ pipeline {
     stage ('DEV Deploy') {
       steps {
       echo 'deploying to DEV Env'
-      deploy adapters: [tomcat9(credentialsId: '899760b0-ebb6-4ba8-9d0a-bf4b5ca9119b', path: '', url: 'http://100.24.238.126:8080/')], contextPath: null, war: '**/*.war'
+      deploy adapters: [tomcat9(credentialsId: '899760b0-ebb6-4ba8-9d0a-bf4b5ca9119b', path: '', url: 'http://54.237.112.195:8080/')], contextPath: null, war: '**/*.war'
       }
     }
     stage ('Slack Notification') {
       steps {
         echo "deployed to DEV Env successfully"
-        slackSend(channel:'devops201', message: "Job is successful, here is the info - Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+        slackSend(channel:'olaitan85', message: "Job is successful, here is the info - Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
       }
     }
   }
